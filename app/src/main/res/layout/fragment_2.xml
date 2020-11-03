@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.onboarding.Fragment2">
+
+    <ImageView
+        android:layout_above="@id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/screenshot"
+        android:src="@drawable/ic_bank"/>
+
+    <RelativeLayout
+        android:background="?colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:id="@+id/bottom_layout"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:text="kejjjej ehehheejje ejejejejejej
+ejjejjjeje ehehehheh enene
+hehehehehh eehhejje enen"
+            android:textSize="23sp"
+            android:id="@+id/txt_description"/>
+
+     </RelativeLayout>
+
+</RelativeLayout>
