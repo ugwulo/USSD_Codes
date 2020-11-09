@@ -2,13 +2,51 @@
     <string name="app_name">USSD_Codes</string>
     <string name="title_bank">Bank</string>
     <string name="title_network_provider">Network Provider</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="intro_title_1">Intro Title 1</string>
-    <string name="intro_title_2">Intro Title 2</string>
-    <string name="intro_title_3">Intro Title 3</string>
-    <string name="intro_sub_title_1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
-    <string name="intro_sub_title_2">Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
-    <string name="intro_sub_title_3">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout</string>
+<!--     Network Provider Names-->
+    <string name="mtn">MTN</string>
+    <string name="glo">Glo</string>
+    <string name="airtel">Airtel</string>
+    <string name="_9_mobile">9 Mobile</string>
+    <string name="check_network">Check Network</string>
+
+<!--    Bank Names-->
+    <string name="access_bank">Access Bank</string>
+    <string name="citi_bank">Citi Bank</string>
+    <string name="ecobank">Ecobank Bank</string>
+    <string name="fcmb_bank">First City Monument Bank</string>
+    <string name="fidelity_bank">Fidelity Bank</string>
+    <string name="firstbank">First Bank</string>
+    <string name="gtbank">GTBank</string>
+    <string name="heritage_bank">Heritage Bank</string>
+    <string name="keystone_bank">Keystone Bank</string>
+    <string name="polaris_bank">Polaris Bank</string>
+    <string name="stanbic_bank">Stanbic IBTC Bank</string>
+    <string name="standard_chartered_bank">Standard Chartered Bank</string>
+    <string name="sterling_bank">Sterling Bank</string>
+    <string name="uba_bank">United Bank for Africa Bank</string>
+    <string name="union_bank">Union Bank</string>
+    <string name="wema_bank">Wema Bank</string>
+    <string name="zenith_bank">Zenith Bank</string>
+
+<!--    Access Bank Codes-->
+    <string name="access_self_service">*901#</string>
+    <string name="access_merchant_payment">*901*1*merchant code*amount#</string>
+    <string name="access_airtime_to_self">*901*amount#</string>
+    <string name="access_airtime_to_others">*901*amount*phone number#</string>
+    <string name="access_transfer">*901*amount*account number#</string>
+    <string name="access_balance_enquiry">*901*00#</string>
+    <string name="access_pin_reset">*901*0#</string>
+    <string name="access_LCC_toll_top_up">*901*000*522+etag number+amount#</string>
+    <string name="access_deactivate_ussd_number">*901*911#</string>
+    <string name="access_bill_payments">*901*3#</string>
+    <string name="access_pos_ussd">*901*000*RefCode#</string>
+    <string name="access_diamond_extra">*901*5#</string>
+    <string name="access_payday_loan">*901*11#</string>
+    <string name="access_dual_transaction">*901*14#</string>
+    <string name="access_access_yellow">*901*10#</string>
+    <string name="access_update_customer_info">*901*12#</string>
+
+
+
 </resources>

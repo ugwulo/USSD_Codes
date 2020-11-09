@@ -20,7 +20,9 @@ import io.github.ugwulo.ussd_codes.databinding.ActivityMainBinding
 
 @Suppress("WHEN_ENUM_CAN_BE_NULL_IN_JAVA")
 class MainActivity : AppCompatActivity() {
-    lateinit var mainBinding: ActivityMainBinding
+    companion object{
+        lateinit var mainBinding: ActivityMainBinding
+    }
 
     /** {@param toolbar} sets custom {@link Toolbar} **/
     var toolbar: Toolbar? = null
