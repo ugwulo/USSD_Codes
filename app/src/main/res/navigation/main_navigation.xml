@@ -19,10 +19,18 @@
         android:id="@+id/navigation_network_provider"
         android:name="io.github.ugwulo.ussd_codes.ui.network.NetworkProviderFragment"
         android:label="@string/title_network_provider"
-        tools:layout="@layout/fragment_network_provider" />
+        tools:layout="@layout/fragment_network_provider" >
+        <action
+            android:id="@+id/action_navigation_network_provider_to_networkProviderDetailsFragment"
+            app:destination="@id/networkProviderDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bankDetailsFragment"
         android:name="io.github.ugwulo.ussd_codes.ui.bank.BankDetailsFragment"
         android:label="BankDetailsFragment" />
+    <fragment
+        android:id="@+id/networkProviderDetailsFragment"
+        android:name="io.github.ugwulo.ussd_codes.ui.network.NetworkProviderDetailsFragment"
+        android:label="fragment_network_provider_details" />
 
 </navigation>

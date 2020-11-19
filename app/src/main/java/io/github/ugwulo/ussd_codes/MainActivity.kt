@@ -17,9 +17,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import io.github.ugwulo.ussd_codes.databinding.ActivityMainBinding
+import io.github.ugwulo.ussd_codes.ui.bank.BankDetailsAdapter
+import io.github.ugwulo.ussd_codes.ui.network.NetworkProviderDetailsAdapter
 
 @Suppress("WHEN_ENUM_CAN_BE_NULL_IN_JAVA")
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), BankDetailsAdapter.ClickHandler, NetworkProviderDetailsAdapter.ClickHandler {
     companion object{
         lateinit var mainBinding: ActivityMainBinding
     }
@@ -35,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
         initializeViews()
-
 
         settingsManager = SettingsManager(applicationContext)
 //        observeUiPreferences()
@@ -172,5 +173,27 @@ class MainActivity : AppCompatActivity() {
             startActivity(emailIntent)
         }
 
+    }
+
+    /** interface to handle phone dial for Network Providers **/
+    override fun handleNetworkProviderPhoneDial(code: String) {
+        val networkDialIntent = Intent(Intent.ACTION_DIAL).apply {
+            data = Uri.parse("tel:${Uri.encode(code)}" )
+        }
+        if (networkDialIntent.resolveActivity(packageManager) != null){
+            startActivity(networkDialIntent)
+        }
+        else Toast.makeText(applicationContext, "an error occurred", Toast.LENGTH_SHORT).show()
+    }
+
+    /** interface to handle phone dial for Banks **/
+    override fun handleBankPhoneDial(code: String) {
+        val bankDialIntent = Intent(Intent.ACTION_DIAL).apply {
+            data = Uri.parse("tel:${Uri.encode(code)}" )
+        }
+        if (bankDialIntent.resolveActivity(packageManager) != null){
+            startActivity(bankDialIntent)
+        }
+        else Toast.makeText(applicationContext, "an error occurred", Toast.LENGTH_SHORT).show()
     }
 }

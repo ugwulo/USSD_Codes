@@ -46,7 +46,7 @@ class NetworkProviderFragment : Fragment() {
         }
 
         val gridLayoutManager = GridLayoutManager(this.context, 2)
-        val networkProviderAdapter = NetworkProviderAdapter(listData)
+        val networkProviderAdapter = NetworkProviderAdapter(listData, requireContext())
         networkBinding.rvNetworkProvider.apply {
             layoutManager = gridLayoutManager
             adapter = networkProviderAdapter

@@ -20,4 +20,15 @@
         <item name="windowActionBar">false</item>
     </style>
 
+<!--    transparent theme-->
+    <style name="Theme.USSD_Codes.TransparentTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.USSD_Codes.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.USSD_Codes.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
 </resources>

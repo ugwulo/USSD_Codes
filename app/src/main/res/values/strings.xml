@@ -3,14 +3,14 @@
     <string name="title_bank">Bank</string>
     <string name="title_network_provider">Network Provider</string>
 
-<!--     Network Provider Names-->
+    <!--     Network Provider Names-->
     <string name="mtn">MTN</string>
     <string name="glo">Glo</string>
     <string name="airtel">Airtel</string>
     <string name="_9_mobile">9 Mobile</string>
     <string name="check_network">Check Network</string>
 
-<!--    Bank Names-->
+    <!--    Bank Names-->
     <string name="access_bank">Access Bank</string>
     <string name="citi_bank">Citi Bank</string>
     <string name="ecobank">Ecobank Bank</string>
@@ -29,7 +29,7 @@
     <string name="wema_bank">Wema Bank</string>
     <string name="zenith_bank">Zenith Bank</string>
 
-<!--    Access Bank Codes-->
+    <!--    Access Bank Codes-->
     <string name="access_self_service">*901#</string>
     <string name="access_merchant_payment">*901*1*merchant code*amount#</string>
     <string name="access_airtime_to_self">*901*amount#</string>
@@ -46,7 +46,8 @@
     <string name="access_dual_transaction">*901*14#</string>
     <string name="access_access_yellow">*901*10#</string>
     <string name="access_update_customer_info">*901*12#</string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
