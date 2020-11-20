@@ -2,10 +2,8 @@ package io.github.ugwulo.ussd_codes.ui.bank
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -65,6 +63,11 @@ class BankFragment : Fragment()  {
             adapter = bankAdapter
             layoutManager = gridLayoutManager
         }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        (activity as AppCompatActivity).setSupportActionBar(bankBinding.toolbar)
     }
 
 }

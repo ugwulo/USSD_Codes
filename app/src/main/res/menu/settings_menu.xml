@@ -3,7 +3,6 @@
 
     <item
         android:id="@+id/contact_developer"
-        android:icon="@drawable/ic_network"
         android:title="Contact developer" />
 
     <item

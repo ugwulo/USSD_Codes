@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.ugwulo.ussd_codes.R
 import io.github.ugwulo.ussd_codes.data.BankCodes
@@ -42,6 +43,11 @@ class BankDetailsFragment : Fragment() {
         loadArguments()
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        (activity as AppCompatActivity).setSupportActionBar(bankDetailsBinding.toolbar)
+        bankDetailsBinding.appbarTitle.text = bankName
+    }
     /** get arguments from bundle to show a specific bank's codes **/
     private fun loadArguments() {
         arguments?.getString("BANK_NAME")?.let {

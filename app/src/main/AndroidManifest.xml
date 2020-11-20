@@ -13,7 +13,7 @@
         android:theme="@style/Theme.USSD_Codes">
 
         <activity android:name=".ui.onboarding.OnboardingActivity"
-            android:theme="@style/AppBarTheme">
+            android:theme="@style/Theme.USSD_Codes.AppBarTheme">
 
         </activity>
         <activity

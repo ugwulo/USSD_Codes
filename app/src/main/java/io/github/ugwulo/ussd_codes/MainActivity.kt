@@ -26,7 +26,10 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.ClickHandler, Netwo
         lateinit var mainBinding: ActivityMainBinding
     }
 
-    /** {@param toolbar} sets custom {@link Toolbar} **/
+    /**
+     * {@param toolbar} sets custom {@link Toolbar}
+     *
+     * */
     var toolbar: Toolbar? = null
 
     private lateinit var settingsManager: SettingsManager
@@ -53,21 +56,18 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.ClickHandler, Netwo
 //    }
 
     private fun initializeViews() {
-        //        custom toolbar
-        toolbar = mainBinding.toolbar
-        setSupportActionBar(toolbar)
-//        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar?.hide()
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.main_nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_network_provider, R.id.navigation_bank))
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        val appBarConfiguration = AppBarConfiguration(setOf(
+//            R.id.navigation_network_provider, R.id.navigation_bank))
+//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        mainBinding.darkModeIcon.setOnClickListener(View.OnClickListener {
-            Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show()
-        })
+//        mainBinding.darkModeIcon.setOnClickListener(View.OnClickListener {
+//            Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show()
+//        })
 //        imageButton.setOnClickListener {
 //            lifecycleScope.launch {
 //                when (isDarkMode) {
@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.ClickHandler, Netwo
         }
     }
 
-    /** create an issue in the repository **/
+    /**  create an issue in the repository */
     private fun reportBug() {
          val url = Uri.parse("https://github.com/ugwulo/USSD_Codes/issues")
 
