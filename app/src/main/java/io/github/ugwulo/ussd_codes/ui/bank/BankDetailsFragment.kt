@@ -1,20 +1,20 @@
 package io.github.ugwulo.ussd_codes.ui.bank
 
-import android.content.Intent
-import android.net.Uri
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
+import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.view.MenuItemCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.ugwulo.ussd_codes.R
 import io.github.ugwulo.ussd_codes.data.BankCodes
 import io.github.ugwulo.ussd_codes.databinding.FragmentBankDetailsBinding
 import java.lang.IllegalArgumentException
-import java.lang.NullPointerException
 
 
 class BankDetailsFragment : Fragment() {
@@ -35,17 +35,20 @@ class BankDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        retrieveBankCodes()
         init()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         loadArguments()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (activity as AppCompatActivity).setSupportActionBar(bankDetailsBinding.toolbar)
+        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         bankDetailsBinding.appbarTitle.text = bankName
     }
     /** get arguments from bundle to show a specific bank's codes **/
@@ -55,9 +58,64 @@ class BankDetailsFragment : Fragment() {
         }
     }
 
-    private fun init() {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        inflater.inflate(R.menu.detail_menu, menu)
+        val searchItem = menu.findItem(R.id.search)
 
-        /** bundle $bankName determines the parameter passed to the BankDetailsAdapter **/
+        val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView = searchItem!!.actionView as SearchView
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
+        searchView.isIconifiedByDefault = false
+        searchView.requestFocus()
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return false
+            }
+        })
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun init() {
+        val linearLayoutManager = LinearLayoutManager(this.activity)
+        bankDetailsBinding.rvBankDetails.apply {
+           try {
+               adapter = bankDetailsAdapter!!
+           } catch (e: IllegalArgumentException){
+               Toast.makeText(requireContext(), "No USSD for this Bank", Toast.LENGTH_SHORT).show()
+           }
+            layoutManager = linearLayoutManager
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.save -> {
+                saveNewBankCode()
+                true
+            }
+            R.id.search -> {
+                searchBankCode()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun searchBankCode() {
+        Toast.makeText(requireContext(), "Search", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun saveNewBankCode() {
+        Toast.makeText(requireContext(), "Save", Toast.LENGTH_SHORT).show()
+    }
+
+    /** bundle $bankName determines the parameter passed to the BankDetailsAdapter */
+    private fun retrieveBankCodes() {
         when(bankName){
             getString(R.string.access_bank) -> {
                 bankDetailsAdapter = BankDetailsAdapter(requireContext(),
@@ -101,14 +159,5 @@ class BankDetailsFragment : Fragment() {
             }
         }
 
-        val linearLayoutManager = LinearLayoutManager(this.activity)
-        bankDetailsBinding.rvBankDetails.apply {
-           try {
-               adapter = bankDetailsAdapter!!
-           } catch (e: IllegalArgumentException){
-               Toast.makeText(requireContext(), "No USSD for this Bank", Toast.LENGTH_SHORT).show()
-           }
-            layoutManager = linearLayoutManager
-        }
     }
 }

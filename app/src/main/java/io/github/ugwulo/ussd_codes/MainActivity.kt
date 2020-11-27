@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.ClickHandler, Netwo
     companion object{
         lateinit var mainBinding: ActivityMainBinding
     }
+
+    private lateinit var navController: NavController
 
     /**
      * {@param toolbar} sets custom {@link Toolbar}
@@ -46,7 +49,10 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.ClickHandler, Netwo
 
     }
 
-//    private fun observeUiPreferences() {
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
+    }
+    //    private fun observeUiPreferences() {
 //        settingsManager.uiModeFlow.asLiveData().observe(this) { uiMode ->
 //            when (uiMode) {
 //                UiMode.LIGHT -> onLightMode()
@@ -59,7 +65,7 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.ClickHandler, Netwo
         supportActionBar?.hide()
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.main_nav_host_fragment)
+        navController = findNavController(R.id.main_nav_host_fragment)
 //        val appBarConfiguration = AppBarConfiguration(setOf(
 //            R.id.navigation_network_provider, R.id.navigation_bank))
 //        setupActionBarWithNavController(navController, appBarConfiguration)
@@ -96,13 +102,13 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.ClickHandler, Netwo
 //        // Actually turn on Dark mode using AppCompatDelegate.setDefaultNightMode() here
 //    }
 
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.settings_menu, menu)
         return true
 
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
        return when(item.itemId) {
@@ -120,6 +126,10 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.ClickHandler, Netwo
            }
            R.id.rate_app -> {
                rateApp()
+               true
+           }
+           R.id.day_night_mode -> {
+               Toast.makeText(this, "Night Mode Coming Soon", Toast.LENGTH_SHORT).show()
                true
            }
            else -> super.onOptionsItemSelected(item)

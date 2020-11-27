@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/contact_developer"
@@ -16,5 +17,11 @@
     <item
         android:id="@+id/share_app"
         android:title="Share this app" />
+
+    <item
+        android:id="@+id/day_night_mode"
+        android:title="Day/Night Mode"
+        android:icon="@drawable/ic_night"
+        app:showAsAction="always"/>
 
 </menu>

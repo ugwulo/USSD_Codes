@@ -51,7 +51,8 @@
                 android:layout_height="50dp"
                 android:src="@drawable/ic_phone"
                 android:padding="8dp"
-                android:id="@+id/ic_phone_dial"/>
+                android:id="@+id/ic_phone_dial"
+                app:tint="@color/purple_700" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
