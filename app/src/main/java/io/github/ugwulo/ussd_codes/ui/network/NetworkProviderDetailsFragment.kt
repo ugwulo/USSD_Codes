@@ -1,10 +1,14 @@
 package io.github.ugwulo.ussd_codes.ui.network
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.ugwulo.ussd_codes.R
 import io.github.ugwulo.ussd_codes.data.NetworkProviderCodes
@@ -13,6 +17,7 @@ import java.lang.IllegalArgumentException
 
 
 class NetworkProviderDetailsFragment : Fragment() {
+    private lateinit var searchItem: MenuItem
     private var networkProviderDetailsAdapter: NetworkProviderDetailsAdapter? = null
     private lateinit var networkProviderName: String
     private lateinit var networkDetailsBinding: FragmentNetworkProviderDetailsBinding
@@ -26,6 +31,27 @@ class NetworkProviderDetailsFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
         inflater.inflate(R.menu.detail_menu, menu)
+        searchItem = menu.findItem(R.id.search)
+        val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView = searchItem.actionView as SearchView
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
+        searchView.setIconifiedByDefault(true)
+        searchView.requestFocus()
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(searchText: String): Boolean {
+
+                if (TextUtils.isEmpty(searchText)) {
+                    networkProviderDetailsAdapter?.filter("")
+                } else {
+                    networkProviderDetailsAdapter?.filter(searchText)
+                }
+                return true
+            }
+        })
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -76,16 +102,8 @@ class NetworkProviderDetailsFragment : Fragment() {
                 saveNewNetworkCode()
                 true
             }
-            R.id.search -> {
-                searchNetworkCode()
-                true
-            }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun searchNetworkCode() {
-        Toast.makeText(requireContext(), "Search", Toast.LENGTH_SHORT).show()
     }
 
     private fun saveNewNetworkCode() {

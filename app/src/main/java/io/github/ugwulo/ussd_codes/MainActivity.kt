@@ -14,15 +14,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import io.github.ugwulo.ussd_codes.databinding.ActivityMainBinding
 import io.github.ugwulo.ussd_codes.ui.bank.BankDetailsAdapter
 import io.github.ugwulo.ussd_codes.ui.network.NetworkProviderDetailsAdapter
+import io.github.ugwulo.ussd_codes.ui.saved_codes.SavedCodesFragment
 
 @Suppress("WHEN_ENUM_CAN_BE_NULL_IN_JAVA")
-class MainActivity : AppCompatActivity(), BankDetailsAdapter.ClickHandler, NetworkProviderDetailsAdapter.ClickHandler {
+class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
+    NetworkProviderDetailsAdapter.PhoneDialImpl, SavedCodesFragment.BottomNavigationImpl {
     companion object{
         lateinit var mainBinding: ActivityMainBinding
     }
@@ -61,15 +61,16 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.ClickHandler, Netwo
 //        }
 //    }
 
+    private val bottomNavigationView: BottomNavigationView
+        get() {
+            return findViewById(R.id.nav_view)
+        }
+
     private fun initializeViews() {
         supportActionBar?.hide()
 
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navController = findNavController(R.id.main_nav_host_fragment)
-//        val appBarConfiguration = AppBarConfiguration(setOf(
-//            R.id.navigation_network_provider, R.id.navigation_bank))
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        bottomNavigationView.setupWithNavController(navController)
 
 //        mainBinding.darkModeIcon.setOnClickListener(View.OnClickListener {
 //            Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show()
@@ -205,5 +206,13 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.ClickHandler, Netwo
             startActivity(bankDialIntent)
         }
         else Toast.makeText(applicationContext, "an error occurred", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun disableBottomNavigation() {
+        bottomNavigationView.visibility = View.GONE
+    }
+
+    override fun enableBottomNavigation() {
+        bottomNavigationView.visibility = View.VISIBLE
     }
 }

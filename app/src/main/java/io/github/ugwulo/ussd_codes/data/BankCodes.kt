@@ -3,10 +3,11 @@ package io.github.ugwulo.ussd_codes.data
 public class BankCodes {
     /** Access Bank Codes **/
     companion object{
+
         fun getAccessBankCodes(): HashMap<String, String> {
             var accessBank: HashMap<String, String> = HashMap()
 
-            return accessBank.apply {
+             accessBank.apply {
                 put("Self service", "*901#")
                 put("Merchant Payment", "*901*1*Merchant code*Amount#")
                 put("Airtime to Self", "*901*amount#")
@@ -23,6 +24,17 @@ public class BankCodes {
                 put("Dual Transaction", "*901*14#")
                 put("Access Yellow", "*901*10#")
                 put("Update Customer Info", "*901*12#")
+            }
+
+            return accessBank
+        }
+
+        fun getCitiBankCodes(): HashMap<String, String>{
+            var citiBank: HashMap<String, String> = HashMap()
+
+            return citiBank.apply {
+                put("No USSD code for this bank yet", "000")
+
             }
         }
 

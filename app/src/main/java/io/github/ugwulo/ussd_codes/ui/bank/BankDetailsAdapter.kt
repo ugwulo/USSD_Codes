@@ -5,59 +5,78 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.github.ugwulo.ussd_codes.databinding.DetailsListItemBinding
+import java.util.*
+import kotlin.collections.HashMap
 
 
 /** adapter class for individual banks details **/
 class BankDetailsAdapter(
     private val context: Context,
-    private val hashMap: HashMap<String, String>
+    private val mainListData: HashMap<String, String>
 ):
     RecyclerView.Adapter<BankDetailsAdapter.BankViewHolder>() {
 
+
+
+    private val TAG: String = " Bank Search"
     lateinit var  binding: DetailsListItemBinding
-    private val clickHandler: ClickHandler = context as ClickHandler
+    private val phoneDialImpl: PhoneDialImpl = context as PhoneDialImpl
+    private var backupData:  HashMap<String, String> = HashMap(mainListData)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BankViewHolder {
         binding = DetailsListItemBinding.inflate(LayoutInflater.from(parent.context),
             parent,
             false)
-
         return BankViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
-      return hashMap.size
+      return mainListData.size
     }
 
     override fun onBindViewHolder(holder: BankViewHolder, position: Int) {
         /** retrieve the bank code at given position and display the sorted items**/
         var pos = 0
-        for (entry: Map.Entry<String, String> in hashMap.toSortedMap().entries){
-            if (position == pos){
-                val key = entry.key
-                val value = entry.value
+        for ((key, value) in mainListData.toSortedMap()){
+            if (position == pos) {
                 holder.bind(key, value)
             }
             pos++
         }
 
+
     }
 
-    interface ClickHandler{
+    interface PhoneDialImpl{
         fun handleBankPhoneDial(code: String)
     }
 
     inner class BankViewHolder(private val listItemBinding: DetailsListItemBinding)
         : RecyclerView.ViewHolder(listItemBinding.root){
+
         fun bind(key: String, value: String){
             listItemBinding.tvCodeName.text = key
             listItemBinding.tvCode.text = value
 
             listItemBinding.icPhoneDial.setOnClickListener{
-                clickHandler.handleBankPhoneDial(value)
+                phoneDialImpl.handleBankPhoneDial(value)
             }
         }
 
+    }
 
+/** function for code search */
+    fun filter(text: String) {
+        text.toLowerCase(Locale.ROOT)
+        mainListData.clear()
+
+        var pos = 0
+        for ((key, value) in backupData) {
+            if (key.toLowerCase(Locale.ROOT).contains(text)) {
+                mainListData[key] = value
+            }
+            pos++
+        }
+        notifyDataSetChanged()
     }
 }

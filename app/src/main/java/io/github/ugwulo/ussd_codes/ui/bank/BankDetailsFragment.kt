@@ -3,13 +3,13 @@ package io.github.ugwulo.ussd_codes.ui.bank
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.*
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.view.MenuItemCompat
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.ugwulo.ussd_codes.R
 import io.github.ugwulo.ussd_codes.data.BankCodes
@@ -18,7 +18,7 @@ import java.lang.IllegalArgumentException
 
 
 class BankDetailsFragment : Fragment() {
-
+    private lateinit var searchItem: MenuItem
     private var bankDetailsAdapter: BankDetailsAdapter? = null
     private lateinit var bankName: String
     private lateinit var bankDetailsBinding: FragmentBankDetailsBinding
@@ -61,20 +61,25 @@ class BankDetailsFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
         inflater.inflate(R.menu.detail_menu, menu)
-        val searchItem = menu.findItem(R.id.search)
-
+        searchItem = menu.findItem(R.id.search)
         val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = searchItem!!.actionView as SearchView
+        val searchView = searchItem.actionView as SearchView
         searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
-        searchView.isIconifiedByDefault = false
+        searchView.setIconifiedByDefault(true)
         searchView.requestFocus()
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(p0: String?): Boolean {
+            override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
-            override fun onQueryTextChange(p0: String?): Boolean {
-                return false
+            override fun onQueryTextChange(searchText: String): Boolean {
+
+                if (TextUtils.isEmpty(searchText)) {
+                    bankDetailsAdapter?.filter("")
+                } else {
+                    bankDetailsAdapter?.filter(searchText)
+                }
+                return true
             }
         })
         super.onCreateOptionsMenu(menu, inflater)
@@ -95,28 +100,20 @@ class BankDetailsFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.save -> {
-                saveNewBankCode()
-                true
-            }
-            R.id.search -> {
-                searchBankCode()
+                view?.let { Navigation.findNavController(it).navigate(R.id.action_bankDetailsFragment_to_savedCodesFragment) }
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    private fun searchBankCode() {
-        Toast.makeText(requireContext(), "Search", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun saveNewBankCode() {
-        Toast.makeText(requireContext(), "Save", Toast.LENGTH_SHORT).show()
-    }
-
     /** bundle $bankName determines the parameter passed to the BankDetailsAdapter */
     private fun retrieveBankCodes() {
         when(bankName){
+            getString(R.string.citi_bank) -> {
+                bankDetailsAdapter = BankDetailsAdapter(requireContext(),
+                BankCodes.getCitiBankCodes())
+            }
             getString(R.string.access_bank) -> {
                 bankDetailsAdapter = BankDetailsAdapter(requireContext(),
                     BankCodes.getAccessBankCodes())
