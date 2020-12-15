@@ -29,20 +29,20 @@
         android:name="io.github.ugwulo.ussd_codes.ui.bank.BankDetailsFragment"
         android:label="BankDetailsFragment" >
         <action
-            android:id="@+id/action_bankDetailsFragment_to_savedCodesFragment"
-            app:destination="@id/savedCodesFragment" />
+            android:id="@+id/action_bankDetailsFragment_to_newCodeFragment"
+            app:destination="@id/newCodeFragment" />
     </fragment>
     <fragment
         android:id="@+id/networkProviderDetailsFragment"
         android:name="io.github.ugwulo.ussd_codes.ui.network.NetworkProviderDetailsFragment"
         android:label="fragment_network_provider_details" >
         <action
-            android:id="@+id/action_networkProviderDetailsFragment_to_savedCodesFragment"
-            app:destination="@id/savedCodesFragment" />
+            android:id="@+id/action_networkProviderDetailsFragment_to_newCodeFragment"
+            app:destination="@id/newCodeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/savedCodesFragment"
-        android:name="io.github.ugwulo.ussd_codes.ui.saved_codes.SavedCodesFragment"
+        android:id="@+id/newCodeFragment"
+        android:name="io.github.ugwulo.ussd_codes.ui.new_code.NewCodeFragment"
         android:label="SavedCodesFragment" />
 
 </navigation>

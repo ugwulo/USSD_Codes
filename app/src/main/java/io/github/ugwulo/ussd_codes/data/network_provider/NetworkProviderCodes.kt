@@ -1,8 +1,12 @@
-package io.github.ugwulo.ussd_codes.data
+package io.github.ugwulo.ussd_codes.data.network_provider
 
+/**
+ * class for retrieving all network provider codes
+ */
 class NetworkProviderCodes {
 
     companion object{
+
         /** MTN Codes */
         fun getMTNCodes(): HashMap<String, String> {
             val mTNCodes = HashMap<String, String>()

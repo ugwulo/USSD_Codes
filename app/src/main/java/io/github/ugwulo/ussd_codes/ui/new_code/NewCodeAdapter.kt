@@ -1,14 +1,14 @@
-package io.github.ugwulo.ussd_codes.ui.saved_codes
+package io.github.ugwulo.ussd_codes.ui.new_code
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.github.ugwulo.ussd_codes.data.NewCodeListItem
+import io.github.ugwulo.ussd_codes.data.new_code.NewCode
 import io.github.ugwulo.ussd_codes.databinding.DetailsListItemBinding
 import kotlinx.android.synthetic.main.details_list_item.view.*
 
-class SavedCodesAdapter(private val context: Context, val codes: MutableList<NewCodeListItem>): RecyclerView.Adapter<SavedCodesAdapter.NewCodeVH>() {
+class NewCodeAdapter(private val context: Context, var codes: List<NewCode>): RecyclerView.Adapter<NewCodeAdapter.NewCodeVH>() {
 
 //    private val phoneDialImpl: PhoneDialImpl = context as PhoneDialImpl
     lateinit var  binding: DetailsListItemBinding

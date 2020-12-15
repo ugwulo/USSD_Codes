@@ -57,5 +57,15 @@
         app:fabSize="auto">
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/defaultText"
+        android:layout_gravity="center_vertical"
+        android:text="No saved codes yet, click the + button to add a new code"
+        android:layout_margin="16dp"
+        android:textSize="23sp"
+        />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

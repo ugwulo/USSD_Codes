@@ -11,12 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.ugwulo.ussd_codes.R
-import io.github.ugwulo.ussd_codes.data.NetworkProviderCodes
+import io.github.ugwulo.ussd_codes.data.network_provider.NetworkProviderCodes
 import io.github.ugwulo.ussd_codes.databinding.FragmentNetworkProviderDetailsBinding
+import io.github.ugwulo.ussd_codes.util.Utils
 import java.lang.IllegalArgumentException
 
 
 class NetworkProviderDetailsFragment : Fragment() {
+    val hideSoftKeyboard: Utils = Utils()
     private lateinit var searchItem: MenuItem
     private var networkProviderDetailsAdapter: NetworkProviderDetailsAdapter? = null
     private lateinit var networkProviderName: String
@@ -26,6 +28,11 @@ class NetworkProviderDetailsFragment : Fragment() {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
         loadArguments()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        hideSoftKeyboard.hideSoftKeyboard(requireActivity())
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -39,7 +46,8 @@ class NetworkProviderDetailsFragment : Fragment() {
         searchView.requestFocus()
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+                searchView.clearFocus()
+                return true
             }
 
             override fun onQueryTextChange(searchText: String): Boolean {

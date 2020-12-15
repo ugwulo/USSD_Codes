@@ -35,7 +35,7 @@ class BankDetailsAdapter(
     }
 
     override fun onBindViewHolder(holder: BankViewHolder, position: Int) {
-        /** retrieve the bank code at given position and display the sorted items**/
+        // retrieve the bank code at given position and display the sorted items
         var pos = 0
         for ((key, value) in mainListData.toSortedMap()){
             if (position == pos) {
@@ -47,6 +47,9 @@ class BankDetailsAdapter(
 
     }
 
+    /**
+     * Interface for handling code phone dials
+     */
     interface PhoneDialImpl{
         fun handleBankPhoneDial(code: String)
     }
@@ -65,7 +68,7 @@ class BankDetailsAdapter(
 
     }
 
-/** function for code search */
+/** function for performing code search in recyclerview*/
     fun filter(text: String) {
         text.toLowerCase(Locale.ROOT)
         mainListData.clear()

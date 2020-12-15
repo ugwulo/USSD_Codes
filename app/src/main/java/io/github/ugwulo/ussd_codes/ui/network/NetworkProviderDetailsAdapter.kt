@@ -8,6 +8,9 @@ import io.github.ugwulo.ussd_codes.databinding.DetailsListItemBinding
 import java.util.*
 import kotlin.collections.HashMap
 
+/**
+ * NetworkProvider details adapter class
+ */
 class NetworkProviderDetailsAdapter(private val context: Context,
                                     private val mainListData: HashMap<String, String>)
     : RecyclerView.Adapter<NetworkProviderDetailsAdapter.NetworkProviderVieHolder>() {
@@ -17,6 +20,9 @@ class NetworkProviderDetailsAdapter(private val context: Context,
     private val phoneDialImpl: PhoneDialImpl = context as PhoneDialImpl
 
 
+    /**
+     * Interface for handling code phone dials
+     */
     interface PhoneDialImpl{
         fun handleNetworkProviderPhoneDial(code: String)
     }
@@ -36,7 +42,7 @@ class NetworkProviderDetailsAdapter(private val context: Context,
     }
 
     override fun onBindViewHolder(holder: NetworkProviderVieHolder, position: Int) {
-        /** retrieve the network provider code at given position and display the sorted items**/
+//        retrieve the network provider code at given position and display the sorted items
         var pos = 0
         for ((key, value) in mainListData.toSortedMap()) {
             if (position == pos) {
@@ -60,6 +66,7 @@ class NetworkProviderDetailsAdapter(private val context: Context,
 
     }
 
+    /** function for performing code search in recyclerview*/
     fun filter(text: String) {
         var newMap: HashMap<String, String> = HashMap()
         text.toLowerCase(Locale.ROOT)

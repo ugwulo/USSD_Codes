@@ -1,16 +1,19 @@
-package io.github.ugwulo.ussd_codes.data
+package io.github.ugwulo.ussd_codes.data.new_code
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(version = 1, entities = [NewCode::class], exportSchema = false)
+/**
+ * database class
+ */
+@Database(entities = [NewCode::class], version = 1)
 abstract class NewCodeDatabase : RoomDatabase() {
 
-    abstract fun playerDao(): NewCodeDao
+    abstract fun newCodeDao(): NewCodeDao
 
-    // TODO: Add PlayerDatabaseCallback here
+    // TODO: Add NewCodeDatabaseCallback here
 
     companion object {
 
@@ -18,7 +21,8 @@ abstract class NewCodeDatabase : RoomDatabase() {
         private var INSTANCE: NewCodeDatabase? = null
 
         fun getDatabase(context: Context): NewCodeDatabase {
-            val tempInstance = INSTANCE
+            val tempInstance =
+                INSTANCE
             if (tempInstance != null) {
                 return tempInstance
             }

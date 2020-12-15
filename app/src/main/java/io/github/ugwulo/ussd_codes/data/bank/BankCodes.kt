@@ -1,9 +1,13 @@
-package io.github.ugwulo.ussd_codes.data
+package io.github.ugwulo.ussd_codes.data.bank
 
-public class BankCodes {
-    /** Access Bank Codes **/
+/**
+ * class for retrieving all bank codes
+ */
+class BankCodes {
+
     companion object{
 
+        /** Access Bank Codes **/
         fun getAccessBankCodes(): HashMap<String, String> {
             var accessBank: HashMap<String, String> = HashMap()
 

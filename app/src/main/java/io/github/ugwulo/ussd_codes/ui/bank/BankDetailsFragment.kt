@@ -12,12 +12,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.ugwulo.ussd_codes.R
-import io.github.ugwulo.ussd_codes.data.BankCodes
+import io.github.ugwulo.ussd_codes.data.bank.BankCodes
 import io.github.ugwulo.ussd_codes.databinding.FragmentBankDetailsBinding
+import io.github.ugwulo.ussd_codes.util.Utils
 import java.lang.IllegalArgumentException
 
-
+/**
+ * Fragment class for Bank Details
+ */
 class BankDetailsFragment : Fragment() {
+    var hideKeyboard: Utils = Utils()
     private lateinit var searchItem: MenuItem
     private var bankDetailsAdapter: BankDetailsAdapter? = null
     private lateinit var bankName: String
@@ -39,6 +43,11 @@ class BankDetailsFragment : Fragment() {
         init()
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        hideKeyboard.hideSoftKeyboard(requireActivity())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -51,7 +60,10 @@ class BankDetailsFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         bankDetailsBinding.appbarTitle.text = bankName
     }
-    /** get arguments from bundle to show a specific bank's codes **/
+
+    /**
+     * get arguments from bundle to show a specific bank's codes
+     */
     private fun loadArguments() {
         arguments?.getString("BANK_NAME")?.let {
             bankName = it
@@ -59,8 +71,12 @@ class BankDetailsFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+
+//        clear Main Activity's menu and replace with Bank Details' menu
         menu.clear()
         inflater.inflate(R.menu.detail_menu, menu)
+
+//        implement search using searchView
         searchItem = menu.findItem(R.id.search)
         val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchView = searchItem.actionView as SearchView
@@ -69,7 +85,8 @@ class BankDetailsFragment : Fragment() {
         searchView.requestFocus()
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+                searchView.clearFocus()
+                return true
             }
 
             override fun onQueryTextChange(searchText: String): Boolean {
@@ -85,6 +102,9 @@ class BankDetailsFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    /**
+     * initialize views
+     */
     private fun init() {
         val linearLayoutManager = LinearLayoutManager(this.activity)
         bankDetailsBinding.rvBankDetails.apply {
@@ -100,14 +120,16 @@ class BankDetailsFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.save -> {
-                view?.let { Navigation.findNavController(it).navigate(R.id.action_bankDetailsFragment_to_savedCodesFragment) }
+                view?.let { Navigation.findNavController(it).navigate(R.id.action_bankDetailsFragment_to_newCodeFragment) }
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    /** bundle $bankName determines the parameter passed to the BankDetailsAdapter */
+    /**
+     * bundle $bankName determines the parameter passed to the BankDetailsAdapter
+     */
     private fun retrieveBankCodes() {
         when(bankName){
             getString(R.string.citi_bank) -> {

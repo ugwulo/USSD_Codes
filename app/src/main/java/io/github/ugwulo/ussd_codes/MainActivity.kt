@@ -18,11 +18,11 @@ import androidx.navigation.ui.setupWithNavController
 import io.github.ugwulo.ussd_codes.databinding.ActivityMainBinding
 import io.github.ugwulo.ussd_codes.ui.bank.BankDetailsAdapter
 import io.github.ugwulo.ussd_codes.ui.network.NetworkProviderDetailsAdapter
-import io.github.ugwulo.ussd_codes.ui.saved_codes.SavedCodesFragment
+import io.github.ugwulo.ussd_codes.ui.new_code.NewCodeFragment
 
 @Suppress("WHEN_ENUM_CAN_BE_NULL_IN_JAVA")
 class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
-    NetworkProviderDetailsAdapter.PhoneDialImpl, SavedCodesFragment.BottomNavigationImpl {
+    NetworkProviderDetailsAdapter.PhoneDialImpl, NewCodeFragment.BottomNavigationImpl {
     companion object{
         lateinit var mainBinding: ActivityMainBinding
     }

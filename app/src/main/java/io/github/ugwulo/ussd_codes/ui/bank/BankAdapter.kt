@@ -1,13 +1,12 @@
 package io.github.ugwulo.ussd_codes.ui.bank
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import io.github.ugwulo.ussd_codes.R
-import io.github.ugwulo.ussd_codes.data.BankModel
+import io.github.ugwulo.ussd_codes.data.bank.BankModel
 import io.github.ugwulo.ussd_codes.databinding.MainListItemBinding
 
 /** adapter class for individual banks **/
@@ -31,6 +30,8 @@ class BankAdapter(private val data: ArrayList<BankModel>): RecyclerView.Adapter<
 
     class BankHolder(private val mainListItemBinding: MainListItemBinding): RecyclerView.ViewHolder(mainListItemBinding.root){
         fun bind(name: String, logoId: Int){
+
+//            passing the bank's name bundle to determine the clicked item in the details fragment
             val bundle = bundleOf("BANK_NAME" to name)
             mainListItemBinding.name.text = name
             mainListItemBinding.logo.setImageResource(logoId)
