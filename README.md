@@ -11,7 +11,8 @@ There are numerous USSD codes for an individual to remember, so I decided to wor
 * Saving new code
 * instant code dial from within the app
 
-### Demo: (Link to demo)
+### Demo 
+![USSD_Codes](demo/USSD_Codes.gif)
 
 ### Stack
 * Kotlin 100%
