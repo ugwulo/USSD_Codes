@@ -9,7 +9,6 @@ import androidx.room.PrimaryKey
  */
 @Entity(tableName = "ussd_codes")
 data class NewCode(
-    @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true) var id: Int,
-    @ColumnInfo(name = "code_name") val codeName: String,
+    @ColumnInfo(name = "code_name") @PrimaryKey val codeName: String,
     @ColumnInfo(name = "code") val code: String
 )

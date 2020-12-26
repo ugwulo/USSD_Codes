@@ -7,7 +7,7 @@
     <string name="mtn">MTN</string>
     <string name="glo">Glo</string>
     <string name="airtel">Airtel</string>
-    <string name="_9_mobile">9 Mobile</string>
+    <string name="_9mobile">9 Mobile</string>
     <string name="check_network">Check Network</string>
 
     <!--    Bank Names-->
@@ -46,9 +46,10 @@
     <string name="access_dual_transaction">*901*14#</string>
     <string name="access_access_yellow">*901*10#</string>
     <string name="access_update_customer_info">*901*12#</string>
+    <string name="saved_codes">Saved Codes</string>
+    <string name="save_code">Save new code</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="saved_codes">Saved Codes</string>
 
 
 </resources>

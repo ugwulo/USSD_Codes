@@ -1,6 +1,5 @@
 package io.github.ugwulo.ussd_codes
 
-import SettingsManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -29,13 +28,9 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
 
     private lateinit var navController: NavController
 
-    /**
-     * {@param toolbar} sets custom {@link Toolbar}
-     *
-     * */
     var toolbar: Toolbar? = null
 
-    private lateinit var settingsManager: SettingsManager
+//    private lateinit var settingsManager: SettingsManager
     private var isDarkMode = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +39,7 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
         setContentView(mainBinding.root)
         initializeViews()
 
-        settingsManager = SettingsManager(applicationContext)
+//        settingsManager = SettingsManager(applicationContext)
 //        observeUiPreferences()
 
     }
@@ -52,14 +47,6 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
     }
-    //    private fun observeUiPreferences() {
-//        settingsManager.uiModeFlow.asLiveData().observe(this) { uiMode ->
-//            when (uiMode) {
-//                UiMode.LIGHT -> onLightMode()
-//                UiMode.DARK -> onDarkMode()
-//            }
-//        }
-//    }
 
     private val bottomNavigationView: BottomNavigationView
         get() {
@@ -72,36 +59,8 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
         navController = findNavController(R.id.main_nav_host_fragment)
         bottomNavigationView.setupWithNavController(navController)
 
-//        mainBinding.darkModeIcon.setOnClickListener(View.OnClickListener {
-//            Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show()
-//        })
-//        imageButton.setOnClickListener {
-//            lifecycleScope.launch {
-//                when (isDarkMode) {
-//                    true -> settingsManager.setUiMode(UiMode.LIGHT)
-//                    false -> settingsManager.setUiMode(UiMode.DARK)
-//                }
-//            }
-//        }
     }
 
-//    private fun onLightMode() {
-//        isDarkMode = false
-//
-//        rootView.setBackgroundColor(ContextCompat.getColor(this, android.R.color.white))
-//        imageButton.setImageResource(R.drawable.ic_moon)
-//
-//        // Actually turn on Light mode using AppCompatDelegate.setDefaultNightMode() here
-//    }
-
-//    private fun onDarkMode() {
-//        isDarkMode = true
-//
-//        rootView.setBackgroundColor(ContextCompat.getColor(this, android.R.color.black))
-//        imageButton.setImageResource(R.drawable.ic_sun)
-//
-//        // Actually turn on Dark mode using AppCompatDelegate.setDefaultNightMode() here
-//    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater

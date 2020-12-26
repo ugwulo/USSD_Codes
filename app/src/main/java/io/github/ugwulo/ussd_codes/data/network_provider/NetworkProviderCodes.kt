@@ -31,5 +31,38 @@ class NetworkProviderCodes {
                 put("Update Customer Info", "*901*12#")
             }
         }
+
+        /**
+         * Glo Codes
+         */
+        fun getGloCodes(): HashMap<String, String> {
+            val gloCodes = HashMap<String, String>()
+
+            return gloCodes.apply {
+                put("Customer Care", "180")
+            }
+        }
+
+        /**
+         * _9Mobile Codes
+         */
+        fun get9MobileCodes(): HashMap<String, String> {
+            val _9MobileCodes = HashMap<String, String>()
+
+            return _9MobileCodes.apply {
+                put("Customer Care", "180")
+            }
+        }
+
+        /**
+         * Airtel Codes
+         */
+        fun getAirtelCodes(): HashMap<String, String> {
+            val airtelCodes = HashMap<String, String>()
+
+            return airtelCodes.apply {
+                put("Customer Care", "180")
+            }
+        }
     }
 }

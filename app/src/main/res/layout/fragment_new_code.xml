@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.new_code.NewCodeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -62,7 +63,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/defaultText"
         android:layout_gravity="center_vertical"
-        android:text="No saved codes yet, click the + button to add a new code"
+        android:text="No saved code yet, click the + button to add a new code"
         android:layout_margin="16dp"
         android:textSize="23sp"
         />

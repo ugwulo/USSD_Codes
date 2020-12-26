@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.ugwulo.ussd_codes.R
 import io.github.ugwulo.ussd_codes.data.network_provider.NetworkProviderCodes
@@ -107,18 +108,14 @@ class NetworkProviderDetailsFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.save -> {
-                saveNewNetworkCode()
+                view?.let { Navigation.findNavController(it).navigate(R.id.action_networkProviderDetailsFragment_to_newCodeFragment) }
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    private fun saveNewNetworkCode() {
-        Toast.makeText(requireContext(), "Save", Toast.LENGTH_SHORT).show()
-    }
-
-    /** bundle $networkProviderName determines the parameter passed to the NetworkProviderDetailsAdapter **/
+    /** bundle [networkProviderName] determines the parameter passed to the NetworkProviderDetailsAdapter **/
     private fun retrieveNetworkProviderCodes() {
         when(networkProviderName){
             getString(R.string.mtn) -> {
@@ -126,13 +123,23 @@ class NetworkProviderDetailsFragment : Fragment() {
                     NetworkProviderCodes.getMTNCodes()
                 )
             }
-            getString(R.string._9_mobile) -> {
+            getString(R.string.airtel) -> {
                 networkProviderDetailsAdapter = NetworkProviderDetailsAdapter(
                     requireContext(),
-                    NetworkProviderCodes.getMTNCodes()
+                    NetworkProviderCodes.getAirtelCodes()
+                )
+            }
+            getString(R.string.glo) -> {
+                networkProviderDetailsAdapter = NetworkProviderDetailsAdapter(requireContext(),
+                    NetworkProviderCodes.getGloCodes()
                 )
             }
 
+            getString(R.string._9mobile) -> {
+                networkProviderDetailsAdapter = NetworkProviderDetailsAdapter(requireContext(),
+                    NetworkProviderCodes.get9MobileCodes()
+                )
+            }
         }
     }
 

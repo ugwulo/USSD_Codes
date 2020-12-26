@@ -28,6 +28,7 @@ class NetworkProviderAdapter(private val data: ArrayList<NetworkProviderModel>, 
     override fun onBindViewHolder(holder: NetworkHolder, position: Int) {
         val data: NetworkProviderModel = data[position]
         holder.bind(data.networkName, data.logoId)
+
     }
 
     inner class NetworkHolder(private val mainListItemBinding: MainListItemBinding): RecyclerView.ViewHolder(mainListItemBinding.root){
@@ -39,7 +40,11 @@ class NetworkProviderAdapter(private val data: ArrayList<NetworkProviderModel>, 
             mainListItemBinding.logo.setImageResource(logoId)
 
             mainListItemBinding.cvContainer.setOnClickListener{
-                Navigation.findNavController(it).navigate(R.id.action_navigation_network_provider_to_networkProviderDetailsFragment, bundle)
+
+//                navigate to CheckNetwork fragment when name matches
+                if (name == context.getString(R.string.check_network)) {
+                    Navigation.findNavController(it).navigate(R.id.action_navigation_network_provider_to_checkNetworkFragment)
+                } else Navigation.findNavController(it).navigate(R.id.action_navigation_network_provider_to_networkProviderDetailsFragment, bundle)
             }
         }
     }

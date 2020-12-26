@@ -50,7 +50,7 @@ class NetworkProviderFragment : Fragment() {
             )
             add(
                 NetworkProviderModel(
-                    getString(R.string._9_mobile),
+                    getString(R.string._9mobile),
                     R.mipmap.nine_mobile_round
                 )
             )

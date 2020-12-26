@@ -23,7 +23,11 @@
         <action
             android:id="@+id/action_navigation_network_provider_to_networkProviderDetailsFragment"
             app:destination="@id/networkProviderDetailsFragment" />
+        <action
+            android:id="@+id/action_navigation_network_provider_to_checkNetworkFragment"
+            app:destination="@id/checkNetworkFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/bankDetailsFragment"
         android:name="io.github.ugwulo.ussd_codes.ui.bank.BankDetailsFragment"
@@ -32,6 +36,7 @@
             android:id="@+id/action_bankDetailsFragment_to_newCodeFragment"
             app:destination="@id/newCodeFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/networkProviderDetailsFragment"
         android:name="io.github.ugwulo.ussd_codes.ui.network.NetworkProviderDetailsFragment"
@@ -40,9 +45,17 @@
             android:id="@+id/action_networkProviderDetailsFragment_to_newCodeFragment"
             app:destination="@id/newCodeFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/newCodeFragment"
         android:name="io.github.ugwulo.ussd_codes.ui.new_code.NewCodeFragment"
-        android:label="SavedCodesFragment" />
+        android:label="fragment_new_code"
+        tools:layout="@layout/fragment_new_code" />
+    <fragment
+        android:id="@+id/checkNetworkFragment"
+        android:name="io.github.ugwulo.ussd_codes.ui.check_network.CheckNetworkFragment"
+        android:label="fragment_check_network"
+        tools:layout="@layout/fragment_check_network" />
+
 
 </navigation>

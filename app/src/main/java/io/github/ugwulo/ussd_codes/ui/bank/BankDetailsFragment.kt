@@ -21,7 +21,7 @@ import java.lang.IllegalArgumentException
  * Fragment class for Bank Details
  */
 class BankDetailsFragment : Fragment() {
-    var hideKeyboard: Utils = Utils()
+    private var hideKeyboard: Utils = Utils()
     private lateinit var searchItem: MenuItem
     private var bankDetailsAdapter: BankDetailsAdapter? = null
     private lateinit var bankName: String
