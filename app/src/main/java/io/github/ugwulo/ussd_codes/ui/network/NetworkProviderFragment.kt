@@ -9,13 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.ugwulo.ussd_codes.R
 import io.github.ugwulo.ussd_codes.data.network_provider.NetworkProviderModel
 import io.github.ugwulo.ussd_codes.databinding.FragmentNetworkProviderBinding
 
 class NetworkProviderFragment : Fragment() {
 
-   lateinit var navController: NavController
+    lateinit var navController: NavController
     lateinit var networkBinding: FragmentNetworkProviderBinding
 
     override fun onCreateView(
@@ -38,7 +39,6 @@ class NetworkProviderFragment : Fragment() {
         (activity as AppCompatActivity).setSupportActionBar(networkBinding.toolbar)
     }
     private fun init() {
-
         /** create list of Network Providers with their names and logo **/
         val listData: ArrayList<NetworkProviderModel> = ArrayList()
         listData.apply {
@@ -81,4 +81,5 @@ class NetworkProviderFragment : Fragment() {
             adapter = networkProviderAdapter
         }
     }
+
 }

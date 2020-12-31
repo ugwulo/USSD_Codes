@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.github.ugwulo.ussd_codes.data.new_code.NewCode
 import io.github.ugwulo.ussd_codes.databinding.DetailsListItemBinding
-import kotlinx.android.synthetic.main.details_list_item.view.*
 
 class NewCodeAdapter(private val context: Context):
     RecyclerView.Adapter<NewCodeAdapter.NewCodeVH>() {
+
 
     private var codes: List<NewCode> = ArrayList()
 //    private val phoneDialImpl: PhoneDialImpl =  context as PhoneDialImpl

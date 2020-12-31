@@ -19,7 +19,6 @@
             android:layout_height="wrap_content"
             android:hint="code name"
             android:inputType="text"
-            android:background="@color/white"
             android:text="" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -38,7 +37,6 @@
             android:layout_height="wrap_content"
             android:hint="code"
             android:inputType="text"
-            android:background="@color/white"
             android:text="" />
 
     </com.google.android.material.textfield.TextInputLayout>

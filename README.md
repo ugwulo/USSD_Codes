@@ -10,6 +10,7 @@ There are numerous USSD codes for an individual to remember, so I decided to wor
 * Network Provider number check
 * Saving new code
 * instant code dial from within the app
+* Dark Mode
 
 ### Demo 
 ![USSD_Codes](demo/USSD_Codes.gif)
@@ -21,7 +22,8 @@ There are numerous USSD codes for an individual to remember, so I decided to wor
 * Jetpack Navigation
 * Room Db
 * MVVM Architecture
-* GSON
+* Hilt
+* Jetpack DataStore
 
 ### How to install?
 

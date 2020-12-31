@@ -1,9 +1,10 @@
 package io.github.ugwulo.ussd_codes.ui.new_code
 
 import android.app.Application
-import android.content.Context
-import androidx.lifecycle.*
-import io.github.ugwulo.ussd_codes.NewCodeApplication
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import io.github.ugwulo.ussd_codes.data.new_code.NewCode
 import io.github.ugwulo.ussd_codes.data.new_code.NewCodeDatabase
 import io.github.ugwulo.ussd_codes.data.new_code.NewCodeRepository
@@ -13,9 +14,9 @@ import kotlinx.coroutines.launch
  * View Model to keep a reference to the NewCode repository and
  * an up-to-date list of all codes.
  */
-class NewCodeViewModel(application: Application) : AndroidViewModel(application) {
+class NewCodeViewModel @ViewModelInject constructor(application: Application)
+    : AndroidViewModel(application) {
     private val repository: NewCodeRepository
-
     init {
         val newCodeDao = NewCodeDatabase
             .getDatabase(application)

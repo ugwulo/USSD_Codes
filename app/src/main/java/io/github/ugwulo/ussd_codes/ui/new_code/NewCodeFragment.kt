@@ -2,16 +2,16 @@ package io.github.ugwulo.ussd_codes.ui.new_code
 
 import android.content.Context
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.ugwulo.ussd_codes.R
 import io.github.ugwulo.ussd_codes.data.new_code.NewCode
 import io.github.ugwulo.ussd_codes.databinding.FragmentNewCodeBinding
@@ -20,9 +20,10 @@ import io.github.ugwulo.ussd_codes.databinding.SaveCodeDialogBinding
 /**
  * [NewCodeFragment] class for New Codes
  */
+@AndroidEntryPoint
 class NewCodeFragment : Fragment() {
     private val TAG = "NewCodeFragment"
-    private lateinit var newCodeViewModel: NewCodeViewModel
+    private val newCodeViewModel: NewCodeViewModel by viewModels()
     private lateinit var savedCodesAdapter: NewCodeAdapter
     private lateinit var newCodeBinding: FragmentNewCodeBinding
     private lateinit var bottomNavigationImpl: BottomNavigationImpl
@@ -60,7 +61,6 @@ class NewCodeFragment : Fragment() {
 
     private fun init() {
         Log.d(TAG, "init: CALLED")
-        newCodeViewModel = ViewModelProvider(this).get(NewCodeViewModel::class.java)
         val linearLayoutManager = LinearLayoutManager(this.activity)
         savedCodesAdapter = NewCodeAdapter(requireContext())
         newCodeBinding.rvSavedCodes.apply {

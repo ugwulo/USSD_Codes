@@ -3,19 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.onboarding.Fragment2">
+    tools:context=".ui.onboarding.Fragment1">
 
     <ImageView
         android:layout_above="@id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/screenshot"
-        android:src="@drawable/ic_bank"/>
+        android:src="@drawable/search_code"/>
 
     <RelativeLayout
-        android:background="?colorPrimary"
+        android:background="?colorPrimaryDark"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="150dp"
         android:id="@+id/bottom_layout"
         android:layout_alignParentBottom="true">
 
@@ -30,9 +30,9 @@
             android:text="kejjjej ehehheejje ejejejejejej
 ejjejjjeje ehehehheh enene
 hehehehehh eehhejje enen"
-            android:textSize="23sp"
+            android:textSize="16sp"
             android:id="@+id/txt_description"/>
 
-     </RelativeLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

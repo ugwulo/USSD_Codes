@@ -14,6 +14,7 @@ class NetworkProviderCodes {
             return mTNCodes.apply {
                 put("Customer Care", "180")
                 put("Self service", "*901#")
+                put("9 Payment Service Bank", "*990#")
                 put("Merchant Payment", "*901*1*Merchant code*Amount#")
                 put("Airtime to Self", "*901*amount#")
                 put("Airtime to Others", "*901*Amount*Phone No#")
@@ -39,7 +40,7 @@ class NetworkProviderCodes {
             val gloCodes = HashMap<String, String>()
 
             return gloCodes.apply {
-                put("Customer Care", "180")
+                put("9 Payment Service Bank", "*990#")
             }
         }
 
@@ -50,7 +51,7 @@ class NetworkProviderCodes {
             val _9MobileCodes = HashMap<String, String>()
 
             return _9MobileCodes.apply {
-                put("Customer Care", "180")
+                put("9 Payment Service Bank", "*990#")
             }
         }
 
@@ -61,7 +62,7 @@ class NetworkProviderCodes {
             val airtelCodes = HashMap<String, String>()
 
             return airtelCodes.apply {
-                put("Customer Care", "180")
+                put("9 Payment Service Bank", "*990#")
             }
         }
     }

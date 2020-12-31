@@ -8,40 +8,39 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.ugwulo.ussd_codes.databinding.ActivityMainBinding
 import io.github.ugwulo.ussd_codes.ui.bank.BankDetailsAdapter
 import io.github.ugwulo.ussd_codes.ui.network.NetworkProviderDetailsAdapter
 import io.github.ugwulo.ussd_codes.ui.new_code.NewCodeFragment
 
 @Suppress("WHEN_ENUM_CAN_BE_NULL_IN_JAVA")
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
     NetworkProviderDetailsAdapter.PhoneDialImpl, NewCodeFragment.BottomNavigationImpl {
     companion object{
         lateinit var mainBinding: ActivityMainBinding
     }
 
+    private var nightModeActive = false
+    private val viewModel: MainActivityViewModel by viewModels()
     private lateinit var navController: NavController
-
     var toolbar: Toolbar? = null
-
-//    private lateinit var settingsManager: SettingsManager
-    private var isDarkMode = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
         initializeViews()
-
-//        settingsManager = SettingsManager(applicationContext)
-//        observeUiPreferences()
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -54,6 +53,19 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
         }
 
     private fun initializeViews() {
+
+        // check if dark mode is on and update the OS
+        viewModel.darkThemeEnabled.observe(this, Observer {nightModeActive ->
+            this.nightModeActive = nightModeActive
+
+            val defaultMode = if (nightModeActive) {
+                AppCompatDelegate.MODE_NIGHT_YES
+            } else {
+                AppCompatDelegate.MODE_NIGHT_NO
+            }
+
+            AppCompatDelegate.setDefaultNightMode(defaultMode)
+        })
         supportActionBar?.hide()
 
         navController = findNavController(R.id.main_nav_host_fragment)
@@ -89,7 +101,7 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
                true
            }
            R.id.day_night_mode -> {
-               Toast.makeText(this, "Night Mode Coming Soon", Toast.LENGTH_SHORT).show()
+               viewModel.toggleNightMode()
                true
            }
            else -> super.onOptionsItemSelected(item)
@@ -174,4 +186,5 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
     override fun enableBottomNavigation() {
         bottomNavigationView.visibility = View.VISIBLE
     }
+
 }
