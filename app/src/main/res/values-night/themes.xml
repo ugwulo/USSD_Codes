@@ -2,7 +2,7 @@
     <!-- Application theme for dark theme. -->
     <style name="Theme.USSD_Codes" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimary">@color/dark_gray</item>
         <item name="colorPrimaryDark">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
@@ -10,8 +10,13 @@
         <item name="colorSecondaryVariant">@color/teel_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <item name="android:itemTextAppearance" tools:targetApi="l">@style/TextAppearance</item>
+    </style>
+
+    <!--    Menu TextAppearance-->
+    <style name="TextAppearance" parent="@android:style/TextAppearance.Widget.IconMenu.Item">
+        <item name="android:textColor">@android:color/primary_text_dark</item>
     </style>
 
 </resources>

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">USSD_Codes</string>
+    <string name="saved_codes">Saved Codes</string>
+    <string name="save_code">Save new code</string>
+    <string name="check_provider">Verify Network Provider</string>
     <string name="title_bank">Bank</string>
     <string name="title_network_provider">Network Provider</string>
 
@@ -46,10 +49,5 @@
     <string name="access_dual_transaction">*901*14#</string>
     <string name="access_access_yellow">*901*10#</string>
     <string name="access_update_customer_info">*901*12#</string>
-    <string name="saved_codes">Saved Codes</string>
-    <string name="save_code">Save new code</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
 </resources>

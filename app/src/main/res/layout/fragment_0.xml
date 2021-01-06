@@ -10,26 +10,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/screenshot"
-        android:src="@drawable/search_code"/>
+        android:src="@drawable/dark_mode"/>
 
     <RelativeLayout
         android:background="?colorPrimaryDark"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:id="@+id/bottom_layout"
         android:layout_alignParentBottom="true">
 
         <TextView
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textAlignment="center"
-            android:text="kejjjej ehehheejje ejejejejejej
-ejjejjjeje ehehehheh enene
-hehehehehh eehhejje enen"
+            android:text="...are you like me who does not joke with dark mode? turn on the toggle :)"
             android:textSize="16sp"
             android:id="@+id/txt_description"/>
 

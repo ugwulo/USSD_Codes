@@ -10,7 +10,6 @@ import io.github.ugwulo.ussd_codes.util.PrefsStoreImpl
 @Module
 @InstallIn(ApplicationComponent::class)
 abstract class StoreModule {
-
     @Binds
     abstract fun bindPrefsStore(prefsStoreImpl: PrefsStoreImpl): PrefsStore
 }

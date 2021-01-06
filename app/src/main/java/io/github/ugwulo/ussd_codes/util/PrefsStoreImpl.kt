@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.preferencesKey
 import androidx.datastore.preferences.createDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
@@ -35,7 +36,22 @@ class PrefsStoreImpl @Inject constructor(
         }
     }
 
+    override fun isFirstTimeLaunch(): Flow<Boolean> = dataStore.data.catch {exception ->
+        if (exception is IOException) {
+            emit(emptyPreferences())
+        } else {
+            throw exception
+        }
+    }.map { it[PreferencesKeys.FIRST_TIME_LAUNCH] ?: false }
+
+    override suspend fun setFirstTimeLaunch() {
+        dataStore.edit {
+            it[PreferencesKeys.FIRST_TIME_LAUNCH] = !(it[PreferencesKeys.FIRST_TIME_LAUNCH] ?: false)
+        }
+    }
+
     private object PreferencesKeys {
         val NIGHT_MODE_KEY = preferencesKey<Boolean>("dark_theme_enabled")
+        val FIRST_TIME_LAUNCH = preferencesKey<Boolean>("app_is_launched")
     }
 }

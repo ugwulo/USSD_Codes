@@ -24,7 +24,7 @@ class NetworkProviderDetailsAdapter(private val context: Context,
      * Interface for handling code phone dials
      */
     interface PhoneDialImpl{
-        fun handleNetworkProviderPhoneDial(code: String)
+        fun handlePhoneDial(code: String)
     }
 
 
@@ -60,7 +60,7 @@ class NetworkProviderDetailsAdapter(private val context: Context,
             listItemBinding.tvCode.text = value
 
             listItemBinding.icPhoneDial.setOnClickListener{
-                phoneDialImpl.handleNetworkProviderPhoneDial(value)
+                phoneDialImpl.handlePhoneDial(value)
             }
         }
 

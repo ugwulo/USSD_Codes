@@ -2,7 +2,8 @@
 
 [![Licence](https://poser.pugx.org/ali-irawan/xtra/license.svg)](https://poser.pugx.org/ali-irawan/xtra/license.svg) [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![GitHub stars](https://img.shields.io/github/stars/ugwulo/USSD_Codes?style=social)](https://github.com/ugwulo/USSD_Codes/stargazers) [![GitHub issues](https://img.shields.io/github/issues/ugwulo/USSD_Codes?style=social)](https://github.com/ugwulo/USSD_Codes/issues) [![GitHub forks](https://img.shields.io/github/forks/ugwulo/USSD_Codes?style=social)](https://github.com/ugwulo/USSD_Codes/forks)
 
-There are numerous USSD codes for an individual to remember, so I decided to work on this app to make the various codes handy for users.
+### Inspiration
+I found there are numerous Unstructured Supplementary Service Data (USSD) codes for an individual to remember and often got a lot of folks asking for these codes daily, so I decided to work on this app to make the various codes handy for fellow Nigerians.
 
 ### Features 🎨
 * Offline codes access
@@ -10,7 +11,7 @@ There are numerous USSD codes for an individual to remember, so I decided to wor
 * Network Provider number check
 * Saving new code
 * instant code dial from within the app
-* Dark Mode
+* Dark Mode :)
 
 ### Demo 
 ![USSD_Codes](demo/USSD_Codes.gif)
@@ -48,3 +49,6 @@ contribution is too small**.
 - **Note** : Every change in this project should/must have an associated issue.
 
 🎨 Head over to our [CONTRIBUTING](CONTRIBUTING.md) guide before opening your first PR :heart:  
+
+### Credits
+ Thanks to [PaystackHQ](https://github.com/PaystackHQ/nigerialogos) for all the Nigerian bank and Network Provider SVG logos :)

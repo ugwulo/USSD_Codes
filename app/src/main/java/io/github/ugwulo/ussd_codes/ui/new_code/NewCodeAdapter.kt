@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import io.github.ugwulo.ussd_codes.data.new_code.NewCode
 import io.github.ugwulo.ussd_codes.databinding.DetailsListItemBinding
 
-class NewCodeAdapter(private val context: Context):
+class NewCodeAdapter (private val context: Context):
     RecyclerView.Adapter<NewCodeAdapter.NewCodeVH>() {
 
 
     private var codes: List<NewCode> = ArrayList()
-//    private val phoneDialImpl: PhoneDialImpl =  context as PhoneDialImpl
+    private val phoneDialImpl: PhoneDialImpl =  context as PhoneDialImpl
     lateinit var  binding: DetailsListItemBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewCodeVH {
@@ -35,7 +35,7 @@ class NewCodeAdapter(private val context: Context):
      * [PhoneDialImpl] Interface for handling code phone dials
      */
     interface PhoneDialImpl{
-        fun handleBankPhoneDial(code: String)
+        fun handlePhoneDial(code: String)
     }
 
     inner class NewCodeVH(private val listItemBinding: DetailsListItemBinding)
@@ -45,7 +45,7 @@ class NewCodeAdapter(private val context: Context):
             listItemBinding.tvCode.text = code
             listItemBinding.tvCodeName.text = codeName
             listItemBinding.icPhoneDial.setOnClickListener{
-//                phoneDialImpl.handleBankPhoneDial(code)
+                phoneDialImpl.handlePhoneDial(code)
             }
         }
 

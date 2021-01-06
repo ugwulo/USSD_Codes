@@ -20,13 +20,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.ugwulo.ussd_codes.databinding.ActivityMainBinding
 import io.github.ugwulo.ussd_codes.ui.bank.BankDetailsAdapter
+import io.github.ugwulo.ussd_codes.ui.check_network.CheckNetworkFragment
 import io.github.ugwulo.ussd_codes.ui.network.NetworkProviderDetailsAdapter
+import io.github.ugwulo.ussd_codes.ui.new_code.NewCodeAdapter
 import io.github.ugwulo.ussd_codes.ui.new_code.NewCodeFragment
+import io.github.ugwulo.ussd_codes.ui.onboarding.OnboardingActivity
 
 @Suppress("WHEN_ENUM_CAN_BE_NULL_IN_JAVA")
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
-    NetworkProviderDetailsAdapter.PhoneDialImpl, NewCodeFragment.BottomNavigationImpl {
+    NetworkProviderDetailsAdapter.PhoneDialImpl, NewCodeFragment.BottomNavigationImpl,
+    CheckNetworkFragment.BottomNavigationImpl,
+    NewCodeAdapter.PhoneDialImpl {
     companion object{
         lateinit var mainBinding: ActivityMainBinding
     }
@@ -53,6 +58,14 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
         }
 
     private fun initializeViews() {
+
+        // check if user has launched app before, if not take them to Onboarding Activity
+        viewModel.firstTimeLaunch.observe(this, Observer {
+            if (!it) {
+                startActivity(Intent(this, OnboardingActivity::class.java))
+                finish()
+            }
+        })
 
         // check if dark mode is on and update the OS
         viewModel.darkThemeEnabled.observe(this, Observer {nightModeActive ->
@@ -157,34 +170,32 @@ class MainActivity : AppCompatActivity(), BankDetailsAdapter.PhoneDialImpl,
 
     }
 
-    /** interface to handle phone dial for Network Providers **/
-    override fun handleNetworkProviderPhoneDial(code: String) {
-        val networkDialIntent = Intent(Intent.ACTION_DIAL).apply {
+    /** interface implementation [handlePhoneDial] for handling [NetworkProviderDetailsAdapter.PhoneDialImpl],
+     *  [BankDetailsAdapter.PhoneDialImpl] and [NewCodeAdapter.PhoneDialImpl] phone dials
+     **/
+    override fun handlePhoneDial(code: String) {
+        val dialIntent = Intent(Intent.ACTION_DIAL).apply {
             data = Uri.parse("tel:${Uri.encode(code)}" )
         }
-        if (networkDialIntent.resolveActivity(packageManager) != null){
-            startActivity(networkDialIntent)
+        if (dialIntent.resolveActivity(packageManager) != null){
+            startActivity(dialIntent)
         }
         else Toast.makeText(applicationContext, "an error occurred", Toast.LENGTH_SHORT).show()
     }
 
-    /** interface to handle phone dial for Banks **/
-    override fun handleBankPhoneDial(code: String) {
-        val bankDialIntent = Intent(Intent.ACTION_DIAL).apply {
-            data = Uri.parse("tel:${Uri.encode(code)}" )
-        }
-        if (bankDialIntent.resolveActivity(packageManager) != null){
-            startActivity(bankDialIntent)
-        }
-        else Toast.makeText(applicationContext, "an error occurred", Toast.LENGTH_SHORT).show()
-    }
-
+    /**
+     * interface implementation for disabling [NewCodeFragment.BottomNavigationImpl] and
+     * [CheckNetworkFragment.BottomNavigationImpl] bottom navigations
+     */
     override fun disableBottomNavigation() {
         bottomNavigationView.visibility = View.GONE
     }
 
+    /**
+     * interface implementation for enabling [NewCodeFragment.BottomNavigationImpl] and
+     * [CheckNetworkFragment.BottomNavigationImpl] bottom navigations
+     */
     override fun enableBottomNavigation() {
         bottomNavigationView.visibility = View.VISIBLE
     }
-
 }

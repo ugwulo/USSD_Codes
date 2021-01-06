@@ -51,7 +51,7 @@ class BankDetailsAdapter(
      * Interface for handling code phone dials
      */
     interface PhoneDialImpl{
-        fun handleBankPhoneDial(code: String)
+        fun handlePhoneDial(code: String)
     }
 
     inner class BankViewHolder(private val listItemBinding: DetailsListItemBinding)
@@ -62,7 +62,7 @@ class BankDetailsAdapter(
             listItemBinding.tvCode.text = value
 
             listItemBinding.icPhoneDial.setOnClickListener{
-                phoneDialImpl.handleBankPhoneDial(value)
+                phoneDialImpl.handlePhoneDial(value)
             }
         }
 

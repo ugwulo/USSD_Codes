@@ -16,6 +16,7 @@ import io.github.ugwulo.ussd_codes.R
 import io.github.ugwulo.ussd_codes.data.new_code.NewCode
 import io.github.ugwulo.ussd_codes.databinding.FragmentNewCodeBinding
 import io.github.ugwulo.ussd_codes.databinding.SaveCodeDialogBinding
+import javax.inject.Inject
 
 /**
  * [NewCodeFragment] class for New Codes
@@ -24,13 +25,14 @@ import io.github.ugwulo.ussd_codes.databinding.SaveCodeDialogBinding
 class NewCodeFragment : Fragment() {
     private val TAG = "NewCodeFragment"
     private val newCodeViewModel: NewCodeViewModel by viewModels()
-    private lateinit var savedCodesAdapter: NewCodeAdapter
+    private lateinit var newCodeAdapter: NewCodeAdapter
     private lateinit var newCodeBinding: FragmentNewCodeBinding
     private lateinit var bottomNavigationImpl: BottomNavigationImpl
 
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        newCodeAdapter = NewCodeAdapter(context)
         bottomNavigationImpl = requireActivity() as BottomNavigationImpl
     }
 
@@ -59,16 +61,16 @@ class NewCodeFragment : Fragment() {
         return newCodeBinding.root
     }
 
+    // initialize views
     private fun init() {
         Log.d(TAG, "init: CALLED")
         val linearLayoutManager = LinearLayoutManager(this.activity)
-        savedCodesAdapter = NewCodeAdapter(requireContext())
         newCodeBinding.rvSavedCodes.apply {
-            adapter = savedCodesAdapter
+            adapter = newCodeAdapter
             layoutManager = linearLayoutManager
         }
         newCodeViewModel.getSavedCodes().observe(viewLifecycleOwner, Observer {
-            savedCodesAdapter.setCode(it)
+            newCodeAdapter.setCode(it)
         })
 
 //        remove default text when a new code is saved
