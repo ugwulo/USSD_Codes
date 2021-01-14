@@ -158,5 +158,154 @@ class BankCodes {
                 put("Buy Data", "*329*1*Phone Number#")
             }
         }
+
+        fun getKeystoneBankCodes(): HashMap<String, String>{
+            var keyStoneBank: HashMap<String, String> = HashMap()
+
+            return keyStoneBank.apply {
+                put("Register Number", "*7111*0#")
+                put("Self service", "*7111#")
+                put("Airtime to self", "*7111*Amount#")
+                put("Airtime to others", "*7111*Amount*Phone Num#")
+                put("Transfer Money", "*7111*Amount*Account Num#")
+                put("Buy Data", "*7111*5#")
+                put("Check Account Number", "*7111*1#")
+                put("Pay Bills", "*7111*2#")
+                put("Check Account Number/Balance", "*7111*1#")
+
+            }
+        }
+
+        fun getPolarisBankCodes(): HashMap<String, String>{
+            var polarisBank: HashMap<String, String> = HashMap()
+
+            return polarisBank.apply {
+                put("Self Service/Register", "*833#")
+                put("Airtime for Self", "*833*Amount#")
+                put("Airtime for Others", "*833*Amount*Phone Num#")
+                put("Transfer Money", "*833*Amount*Account Num#")
+                put("Check Account Balance", "*833*6#")
+                put("Open Account", "*833*1#")
+                put("Pay Bills", "*833*2#")
+                put("Transfer Funds", "*833*3#")
+                put("Pay with Master Pass", "*833*7#")
+                put("Hotlist Card", "*833*4#")
+            }
+        }
+
+        fun getStanbicBankCodes(): HashMap<String, String>{
+            var stanbicBank: HashMap<String, String> = HashMap()
+
+            return stanbicBank.apply {
+                put("Self Service", "*909#")
+                put("Reset Pin", "*909*11*1#")
+                put("Register Number", "*909*1*7#")
+                put("Transfer to Other Banks", "*909*22*Amount*Account Num#")
+                put("Transfer to Stanbic Account", "*909*11*Amount*Account Num#")
+                put("Airtime for Others", "*909*Amount*Phone Num#")
+                put("Airtime for Self", "*909*Amount#")
+                put("Check Account Balance", "*909*1*1#")
+            }
+        }
+
+        fun getSterlingBankCodes(): HashMap<String, String>{
+            var sterlingBank: HashMap<String, String> = HashMap()
+
+            return sterlingBank.apply {
+                put("Self Service", "*822#")
+                put("Reset Pin", "*822*9#")
+                put("Transfer to Other Banks", "*822*5*Amount*Account Num#")
+                put("Transfer to Sterling Account", "*822*4*Amount*Account Num#")
+                put("Airtime for Others", "*822*Amount*Phone Num#")
+                put("Airtime for Self", "*822*Amount#")
+                put("Check Account Balance", "*822*6#")
+                put("Check Account Number", "*822*8#")
+                put("Open Account", "*822*7#")
+            }
+        }
+
+        fun getStandardCharteredBankCodes(): HashMap<String, String>{
+            var standardCharteredBank: HashMap<String, String> = HashMap()
+
+            return standardCharteredBank.apply {
+                put("Self Service", "*977#")
+            }
+        }
+
+        fun getUBABankCodes(): HashMap<String, String>{
+            var uBA: HashMap<String, String> = HashMap()
+
+            return uBA.apply {
+                put("Self Service", "*919#")
+                put("Transfer to Other Banks", "*919*4*Account Num*Amount#")
+                put("Transfer to UBA Account", "*919*3*Account Num*Amount#")
+                put("Airtime for Others", "*919*Phone Num*Amount#")
+                put("Airtime for Self", "*919*Amount#")
+                put("Check Account Balance", "*919*0#")
+                put("Pay Bills", "*919*5#")
+                put("ATM Cardless Withdrawal", "*919*30*Amount#")
+                put("Update BVN", "*919*6#")
+            }
+        }
+
+        fun getUnionBankCodes(): HashMap<String, String>{
+            var unionBank: HashMap<String, String> = HashMap()
+
+            return unionBank.apply {
+                put("Self Service", "*826#")
+                put("Transfer to Other Banks", "*826*2*Amount*Account Num#")
+                put("Transfer to Union Account", "*826*1*Amount*Account Num#")
+                put("Airtime for Others", "*826*Amount*Phone Num#")
+                put("Airtime for Self", "*826*Amount#")
+                put("Check Account Balance", "*826*4#")
+                put("Pay Merchants", "*826*22*Merchant Code*Amount#")
+                put("ATM Cardless Withdrawal", "*826*7*Amount#")
+                put("Locate a Branch/Agent", "*826*19#")
+                put("Request a Debit Card", "*826*21#")
+                put("Request a Loan", "*826*41#")
+            }
+        }
+
+        fun getWemaBankCodes(): HashMap<String, String>{
+            var wemaBank: HashMap<String, String> = HashMap()
+
+            return wemaBank.apply {
+                put("Self Service", "*945#")
+                put("Account Registration", "*945*911#")
+                put("Open Account", "*945*1#")
+                put("Bank Transfer (All Banks)", "*945*Account Num*Amount#")
+                put("Airtime for Others", "*945*Phone Num*Amount#")
+                put("Airtime for Self", "*945*Amount#")
+                put("Airtime/Data", "*945*2#")
+                put("Check Account Balance", "*945*0#")
+                put("Check Account Number", "*945*000#")
+                put("ATM Cardless Withdrawal", "*945*8*Amount#")
+                put("Link BVN", "*945*4*BVN#")
+                put("Change Account", "*945*2*Old Acc*New Acc#")
+                put("Mcash", "*945*22*Merchant Code*Amount#")
+                put("Coral Pay", "*945*000*Reference No#")
+                put("Deactivate Account", "*945*911#")
+            }
+        }
+
+        fun getZenithBankCodes(): HashMap<String, String>{
+            var zenithBank: HashMap<String, String> = HashMap()
+
+            return zenithBank.apply {
+                put("Self Service", "*966#")
+                put("Open Account", "*966*0#")
+                put("Bank Transfer (All Banks)", "*966*Amount*Account Num#")
+                put("Buy Airtime", "*966*Amount*Phone Num#")
+                put("Check Account Balance", "*966*00#")
+                put("ATM Cardless Withdrawal", "*966*60#")
+                put("Update BVN", "*966*BVN#")
+                put("Reset USSD PIN", "*966*60#")
+                put("DSTV and PHCN", "*966*7*Amount*Customer ID#")
+                put("Pay Bills", "*966*6*Biller Code#")
+                put("Deactivate Mobile Bank Profile", "*966*20*0#")
+                put("Deactivate Account", "*966*911#")
+                put("Activate Agent Banking", "*966*66#")
+            }
+        }
     }
 }

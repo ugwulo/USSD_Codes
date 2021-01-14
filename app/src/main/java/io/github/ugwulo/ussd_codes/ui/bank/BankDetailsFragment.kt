@@ -5,17 +5,16 @@ import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.*
-import androidx.appcompat.widget.SearchView
-import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.ugwulo.ussd_codes.R
 import io.github.ugwulo.ussd_codes.data.bank.BankCodes
 import io.github.ugwulo.ussd_codes.databinding.FragmentBankDetailsBinding
 import io.github.ugwulo.ussd_codes.util.Utils
-import java.lang.IllegalArgumentException
 
 /**
  * Fragment class for Bank Details
@@ -174,6 +173,60 @@ class BankDetailsFragment : Fragment() {
                 bankDetailsAdapter = BankDetailsAdapter(
                     requireContext(),
                     BankCodes.getFCMBankCodes()
+                )
+            }
+            getString(R.string.keystone_bank) -> {
+                bankDetailsAdapter = BankDetailsAdapter(
+                    requireContext(),
+                    BankCodes.getKeystoneBankCodes()
+                )
+            }
+            getString(R.string.polaris_bank) -> {
+                bankDetailsAdapter = BankDetailsAdapter(
+                    requireContext(),
+                    BankCodes.getPolarisBankCodes()
+                )
+            }
+            getString(R.string.stanbic_bank) -> {
+                bankDetailsAdapter = BankDetailsAdapter(
+                    requireContext(),
+                    BankCodes.getStanbicBankCodes()
+                )
+            }
+            getString(R.string.standard_chartered_bank) -> {
+                bankDetailsAdapter = BankDetailsAdapter(
+                    requireContext(),
+                    BankCodes.getStandardCharteredBankCodes()
+                )
+            }
+            getString(R.string.sterling_bank) -> {
+                bankDetailsAdapter = BankDetailsAdapter(
+                    requireContext(),
+                    BankCodes.getSterlingBankCodes()
+                )
+            }
+            getString(R.string.uba_bank) -> {
+                bankDetailsAdapter = BankDetailsAdapter(
+                    requireContext(),
+                    BankCodes.getUBABankCodes()
+                )
+            }
+            getString(R.string.union_bank) -> {
+                bankDetailsAdapter = BankDetailsAdapter(
+                    requireContext(),
+                    BankCodes.getUnionBankCodes()
+                )
+            }
+            getString(R.string.wema_bank) -> {
+                bankDetailsAdapter = BankDetailsAdapter(
+                    requireContext(),
+                    BankCodes.getWemaBankCodes()
+                )
+            }
+            getString(R.string.zenith_bank) -> {
+                bankDetailsAdapter = BankDetailsAdapter(
+                    requireContext(),
+                    BankCodes.getZenithBankCodes()
                 )
             }
         }

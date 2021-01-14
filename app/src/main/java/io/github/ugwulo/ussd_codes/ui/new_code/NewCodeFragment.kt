@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.ugwulo.ussd_codes.R
 import io.github.ugwulo.ussd_codes.data.new_code.NewCode
 import io.github.ugwulo.ussd_codes.databinding.FragmentNewCodeBinding
 import io.github.ugwulo.ussd_codes.databinding.SaveCodeDialogBinding
-import javax.inject.Inject
 
 /**
  * [NewCodeFragment] class for New Codes
@@ -92,7 +92,7 @@ class NewCodeFragment : Fragment() {
                 val codeName = saveCodeDialogBinding.tvCodeName.text.toString()
                 val code = saveCodeDialogBinding.tvCode.text.toString()
                 if (code.isBlank() || codeName.isBlank()) {
-                    Toast.makeText(requireContext(), "Fields must not be empty", Toast.LENGTH_SHORT).show()
+                    Snackbar.make(newCodeBinding.root, "Fields must not be empty", Snackbar.LENGTH_SHORT).show()
                 } else {
                     val newCode = NewCode(codeName, code)
                     saveNewCode(newCode)
