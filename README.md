@@ -28,11 +28,10 @@ I found there are numerous Unstructured Supplementary Service Data (USSD) codes 
 
 ### How to install?
 
+[Available in Playstore](https://play.google.com/store/apps/details?id=io.github.ugwulo.ussd_codes)
+
 - Get the latest releases [here](https://github.com/ugwulo/USSD_Codes/releases/) once they are available and download the .apk file
-- Enable Unknown Sources in your phone if not already enabled and install the app
-- Ignore the Google Play Protect Warning, your security is assured
-- Once installed open the app and allow all the requested permissions (if any) and you are set.
-- Coming soon in PlayStore
+
 
 ### :heart: Found this project useful?
 
