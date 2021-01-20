@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="nigeria.network.ussd.cod">
+    package="nigeria.network.ussd.bank.cod">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name="nigeria.network.ussd.cod.di.App"
+        android:name="nigeria.network.ussd.bank.cod.di.App"
         android:allowBackup="true"
         android:icon="@mipmap/logo_foreground"
         android:label="@string/app_name"
@@ -15,14 +15,14 @@
         android:theme="@style/Theme.USSD_Codes"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name="nigeria.network.ussd.cod.ui.onboarding.OnboardingActivity"
+        <activity android:name="nigeria.network.ussd.bank.cod.ui.onboarding.OnboardingActivity"
             android:theme="@style/Theme.USSD_Codes.AppBarTheme">
 
 
         </activity>
 
         <activity
-            android:name="nigeria.network.ussd.cod.MainActivity"
+            android:name="nigeria.network.ussd.bank.cod.MainActivity"
             android:theme="@style/Theme.USSD_Codes.TransparentTheme"
             android:label="@string/app_name">
 

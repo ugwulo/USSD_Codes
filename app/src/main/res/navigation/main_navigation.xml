@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_bank"
-        android:name="nigeria.network.ussd.cod.ui.bank.BankFragment"
+        android:name="nigeria.network.ussd.bank.cod.ui.bank.BankFragment"
         android:label="@string/title_bank"
         tools:layout="@layout/fragment_bank" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/navigation_network_provider"
-        android:name="nigeria.network.ussd.cod.ui.network.NetworkProviderFragment"
+        android:name="nigeria.network.ussd.bank.cod.ui.network.NetworkProviderFragment"
         android:label="@string/title_network_provider"
         tools:layout="@layout/fragment_network_provider" >
         <action
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/bankDetailsFragment"
-        android:name="nigeria.network.ussd.cod.ui.bank.BankDetailsFragment"
+        android:name="nigeria.network.ussd.bank.cod.ui.bank.BankDetailsFragment"
         android:label="BankDetailsFragment" >
         <action
             android:id="@+id/action_bankDetailsFragment_to_newCodeFragment"
@@ -39,7 +39,7 @@
 
     <fragment
         android:id="@+id/networkProviderDetailsFragment"
-        android:name="nigeria.network.ussd.cod.ui.network.NetworkProviderDetailsFragment"
+        android:name="nigeria.network.ussd.bank.cod.ui.network.NetworkProviderDetailsFragment"
         android:label="fragment_network_provider_details" >
         <action
             android:id="@+id/action_networkProviderDetailsFragment_to_newCodeFragment"
@@ -48,12 +48,12 @@
 
     <fragment
         android:id="@+id/newCodeFragment"
-        android:name="nigeria.network.ussd.cod.ui.new_code.NewCodeFragment"
+        android:name="nigeria.network.ussd.bank.cod.ui.new_code.NewCodeFragment"
         android:label="fragment_new_code"
         tools:layout="@layout/fragment_new_code" />
     <fragment
         android:id="@+id/checkNetworkFragment"
-        android:name="nigeria.network.ussd.cod.ui.check_network.CheckNetworkFragment"
+        android:name="nigeria.network.ussd.bank.cod.ui.check_network.CheckNetworkFragment"
         android:label="fragment_check_network"
         tools:layout="@layout/fragment_check_network" />
 
