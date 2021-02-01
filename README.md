@@ -28,7 +28,7 @@ I found there are numerous Unstructured Supplementary Service Data (USSD) codes 
 
 ### How to install?
 
-[Available in Playstore](https://play.google.com/store/apps/details?id=io.github.ugwulo.ussd_codes)
+[Available in Playstore](https://play.google.com/store/apps/details?id=nigeria.network.ussd.bank.cod)
 
 - Get the latest releases [here](https://github.com/ugwulo/USSD_Codes/releases/) once they are available and download the .apk file
 
